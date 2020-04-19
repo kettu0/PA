@@ -1,0 +1,13 @@
+A4@z,Maciej,Nowak,1990,B,80,70
+W1&p,Piotr,Dolny,1989,B,79,40
+P9!x,Grzegorz,Zgierski,1992,B,100,90
+P1)n,Adam,Nowakowski,1994,A,98,80
+S0*l,Dominik,Leski,1997,A,90,75
+M9@p,Ela,Opak,1988,A,60,69
+P3$o,Magdalena,Niedomirska,1985,B,83,72
+L5%h,Filip,Kowalski,1980,B,87,83
+Q9(k,Andrzej,Modulny,1991,A,88,84
+K8^t,Katarzyna,Gdowski,1991,B,88,74
+Z7*r,Anna,Zmienna,1996,A,94,87
+R6$o,Cyprian,Norwid,1987,A,95,79
+E4)i,Barbara,Loremska,1991,B,76,61
