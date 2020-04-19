@@ -15,6 +15,13 @@ def import_data_from_file(filename='class_data.txt'):
     :returns: list of lists representing students' data
     :rtype: list
     """
+    students_list = []
+    with open(filename, "r") as class_list:
+        all_students = class_list.readlines()
+        for line in all_students:
+            properties = line.strip("\n").split(",")
+            students_list.append(properties)
+        return students_list
 
 
 def export_to_file(data, filename='class_data.txt', mode='a'):
@@ -30,6 +37,13 @@ def export_to_file(data, filename='class_data.txt', mode='a'):
     :raises ValueError: if mode other than 'w' or 'a' was given. Error message:
         'Wrong write mode'
     """
+    if mode != "a" and mode != "w":
+        raise ValueError("Wrong write mode")
+
+    with open(filename, mode) as class_list:
+        for student in data:
+            line = ",".join(student)
+            class_list.write(line + "\n")
 
 
 def get_student_by_id(uid, students):
@@ -46,6 +60,13 @@ def get_student_by_id(uid, students):
     :rtype: list
     """
 
+    for properties in students:
+        if properties[0] == uid:
+            return properties
+        if uid not in properties:
+            raise ValueError("Student does not exist")
+    properties += 1
+
 
 def get_students_of_class(students, class_name):
     """
@@ -59,6 +80,10 @@ def get_students_of_class(students, class_name):
     :rtype: list
     """
 
+    students_from_class = []
+    for line in students:
+        class_index = 4
+        if line in 
 
 def get_youngest_student(students):
     """
@@ -228,3 +253,9 @@ def sort_students_by_age(students, order=None):
     :returns: sorted students or empty list
     :rtype: list
     """
+
+def main():
+    pass
+
+if __name__ == '__main__':
+    main()

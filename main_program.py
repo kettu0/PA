@@ -20,16 +20,13 @@ def add_new_student(students, new_student):
 
 
 def delete_student_by_id(students, uid):
-    """
-    Deletes student from list by given unique id and updates data file
 
-    :param list students: currently existing students
-    :param str uid: unique id of student to be deleted
-
-    :returns: updated students list
-    :rtype: list
-    """
-
+    for properties in students:
+        if uid == properties[0]:
+            students.remove(properties)
+    students[:] = students
+    return students
+    
 
 def main():
     """
