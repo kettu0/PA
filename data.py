@@ -81,10 +81,13 @@ def get_students_of_class(students, class_name):
     """
 
     students_from_class = []
+    class_index = 4
     for line in students:
-        class_index = 4
-        if line in 
+        if line[class_index] == class_name:
+            students_from_class.append(line)
+    return students_from_class
 
+    
 def get_youngest_student(students):
     """
     Get youngest student from all classes
