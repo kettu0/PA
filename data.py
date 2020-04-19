@@ -82,12 +82,12 @@ def get_students_of_class(students, class_name):
 
     students_from_class = []
     class_index = 4
-    for line in students:
-        if line[class_index] == class_name:
-            students_from_class.append(line)
+    for properties in students:
+        if properties[class_index] == class_name:
+            students_from_class.append(properties)
     return students_from_class
 
-    
+
 def get_youngest_student(students):
     """
     Get youngest student from all classes
@@ -102,7 +102,18 @@ def get_youngest_student(students):
     :rtype: list
     """
 
+    year_index = 3
+    youngest_student = []
+    latest_year = 1900
 
+    for properties in students:
+        if int(properties[year_index]) > latest_year:
+            latest_year = int(properties[year_index])
+            
+        if latest_year == properties[year_index]:
+            youngest_student.append(properties)
+    return youngest_student
+    
 def get_youngest_student_of_class(students, class_name):
     """
     Get youngest student from given class
@@ -133,6 +144,17 @@ def get_oldest_student(students):
     :returns: oldest student
     :rtype: list
     """
+
+    year_index = 3
+    oldest_student = []
+    current_year = 2020
+
+    for properties in students:
+        if int(properties[year_index]) < current_year:
+            current_year = int(properties[year_index])
+            oldest_student.append(properties)
+    return oldest_student
+
 
 
 def get_oldest_student_of_class(students, class_name):
