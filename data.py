@@ -1,7 +1,7 @@
 """
 This module should use random module to generate_id
 """
-
+import random
 
 def import_data_from_file(filename='class_data.txt'):
     """
@@ -16,8 +16,10 @@ def import_data_from_file(filename='class_data.txt'):
     :rtype: list
     """
     students_list = []
+
     with open(filename, "r") as class_list:
         all_students = class_list.readlines()
+
         for line in all_students:
             properties = line.strip("\n").split(",")
             students_list.append(properties)
@@ -65,7 +67,6 @@ def get_student_by_id(uid, students):
             return properties
         if uid not in properties:
             raise ValueError("Student does not exist")
-    properties += 1
 
 
 def get_students_of_class(students, class_name):
@@ -82,6 +83,7 @@ def get_students_of_class(students, class_name):
 
     students_from_class = []
     class_index = 4
+
     for properties in students:
         if properties[class_index] == class_name:
             students_from_class.append(properties)
@@ -143,7 +145,7 @@ def get_youngest_student_of_class(students, class_name):
     for properties in students:
         if latest_year == int(properties[year_index]):
             return properties
-    
+
 
 def get_oldest_student(students):
     """
@@ -256,7 +258,6 @@ def get_average_presence_of_students(students):
         presence_avg = presence_avg + 0.5
     else:
         isinstance(presence_avg, int) is True
-        
     return int(presence_avg)
 
 
@@ -288,6 +289,26 @@ def generate_id(current_ids):
     :returns: unique id
     :rtype: str
     """
+
+    pattern = "UNCL"
+    unique_id = ""
+    lower_case = "abcdefghijklmnopqrstuvwxyz"
+    numbers = "0123456789"
+    upper_case = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    special_chars = "!@#$%^&*()_+"
+
+    for character in pattern:
+        if character == 'U':
+            unique_id += upper_case[random.randrange(len(upper_case))]
+        if character == 'N':
+            unique_id += numbers[random.randrange(len(numbers))]
+        if character == 'C':
+            unique_id += special_chars[random.randrange(len(special_chars))]
+        if character == 'L':
+            unique_id += lower_case[random.randrange(len(lower_case))]
+
+    if unique_id not in current_ids:
+        return unique_id
 
 
 def get_all_by_gender(students, gender):
