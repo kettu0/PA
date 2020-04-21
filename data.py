@@ -103,16 +103,17 @@ def get_youngest_student(students):
     """
 
     year_index = 3
-    youngest_student = []
     latest_year = 1900
 
     for properties in students:
-        if int(properties[year_index]) > latest_year:
-            latest_year = int(properties[year_index])
-            
-        if latest_year == properties[year_index]:
-            youngest_student.append(properties)
-    return youngest_student
+        birth_year = int(properties[year_index])
+        if birth_year > latest_year:
+            latest_year = birth_year
+
+    for properties in students:
+        if latest_year == int(properties[year_index]):
+            return properties
+
     
 def get_youngest_student_of_class(students, class_name):
     """
