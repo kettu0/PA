@@ -130,7 +130,21 @@ def get_youngest_student_of_class(students, class_name):
     :returns: youngest student from given class
     :rtype: list
     """
+    year_index = 3
+    class_index = 4
+    latest_year = 1900
 
+    for properties in students:
+        if properties[class_index] == class_name:
+            birth_year = int(properties[year_index])
+            if birth_year > latest_year:
+                latest_year = birth_year
+
+    for properties in students:
+        if latest_year == int(properties[year_index]):
+            return properties
+
+    
 
 def get_oldest_student(students):
     """
