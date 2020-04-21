@@ -194,7 +194,7 @@ def get_oldest_student_of_class(students, class_name):
     current_year = 2020
 
     for properties in students:
-        if properties[class_index] == class_name:
+        if properties[class_index] == class_name.lower() or properties[class_index] == class_name.upper():
             birth_year = int(properties[year_index])
             if birth_year < current_year:
                 current_year = birth_year
@@ -332,21 +332,21 @@ def get_all_by_gender(students, gender):
     """
     name_index = 1
     index = 0
-    students_gender = []
+    students_by_gender = []
 
     for properties in students:
         name = students[index][name_index]
         if gender == "female".upper() or gender == "FEMALE".lower():
             if name[-1] == "a":
-                students_gender.append(properties)
+                students_by_gender.append(properties)
 
         elif gender == "male".upper() or gender == "MALE".lower():
             if name[-1] != "a":
-                students_gender.append(properties)
+                students_by_gender.append(properties)
         else:
             raise ValueError("Wrong gender")
         index += 1
-    return students_gender
+    return students_by_gender
 
 
 def sort_students_by_age(students, order=None):
