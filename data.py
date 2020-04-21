@@ -147,14 +147,16 @@ def get_oldest_student(students):
     """
 
     year_index = 3
-    oldest_student = []
     current_year = 2020
 
     for properties in students:
-        if int(properties[year_index]) < current_year:
-            current_year = int(properties[year_index])
-            oldest_student.append(properties)
-    return oldest_student
+        birth_year = int(properties[year_index])
+        if birth_year < current_year:
+            current_year = birth_year
+
+    for properties in students:
+        if current_year == int(properties[year_index]):
+            return properties
 
 
 
