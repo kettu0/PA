@@ -371,9 +371,45 @@ def sort_students_by_age(students, order=None):
     :returns: sorted students or empty list
     :rtype: list
     """
+    year_index = 3
+    index = 0
+    students_length = len(students)
+
+    if order == "asc":
+        while index < students_length-1:
+            next_index = 0
+            while next_index < students_length - index - 1:
+                if students[next_index][year_index] > students[next_index+1][year_index]:
+                    temp = students[next_index+1][year_index]
+                    students[next_index+1][year_index] = students[next_index][year_index]
+                    students[next_index][year_index] = temp
+                next_index = next_index + 1
+            index = index + 1
+        return students
+
+    elif order == "desc":
+        while index < students_length-1:
+            next_index = 0
+            while next_index < students_length - index - 1:
+                if students[next_index][year_index] < students[next_index+1][year_index]:
+                    temp = students[next_index+1][year_index]
+                    students[next_index+1][year_index] = students[next_index][year_index]
+                    students[next_index][year_index] = temp
+                next_index = next_index + 1
+            index = index + 1
+        return students
+
+    elif order is None:
+        students = []
+        return students
+
+    else:
+        raise ValueError("Wrong order")
+
 
 def main():
     pass
+
 
 if __name__ == '__main__':
     main()
