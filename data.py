@@ -330,6 +330,23 @@ def get_all_by_gender(students, gender):
     :returns: list of students filtered by given gender
     :rtype: list
     """
+    name_index = 1
+    index = 0
+    students_gender = []
+
+    for properties in students:
+        name = students[index][name_index]
+        if gender == "female".upper() or gender == "FEMALE".lower():
+            if name[-1] == "a":
+                students_gender.append(properties)
+
+        elif gender == "male".upper() or gender == "MALE".lower():
+            if name[-1] != "a":
+                students_gender.append(properties)
+        else:
+            raise ValueError("Wrong gender")
+        index += 1
+    return students_gender
 
 
 def sort_students_by_age(students, order=None):
