@@ -189,6 +189,19 @@ def get_oldest_student_of_class(students, class_name):
     :returns: oldest student
     :rtype: list
     """
+    year_index = 3
+    class_index = 4
+    current_year = 2020
+
+    for properties in students:
+        if properties[class_index] == class_name:
+            birth_year = int(properties[year_index])
+            if birth_year < current_year:
+                current_year = birth_year
+
+    for properties in students:
+        if current_year == int(properties[year_index]):
+            return properties
 
 
 def get_average_grade_of_students(students):
