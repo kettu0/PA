@@ -143,7 +143,6 @@ def get_youngest_student_of_class(students, class_name):
     for properties in students:
         if latest_year == int(properties[year_index]):
             return properties
-
     
 
 def get_oldest_student(students):
@@ -171,7 +170,6 @@ def get_oldest_student(students):
     for properties in students:
         if current_year == int(properties[year_index]):
             return properties
-
 
 
 def get_oldest_student_of_class(students, class_name):
@@ -218,6 +216,16 @@ def get_average_grade_of_students(students):
     :rtype: float
     """
 
+    grade_index = 5
+    student_counter = 0
+    grade_sum = 0
+
+    for properties in students:
+        student_counter += 1
+        grade_sum += float(properties[grade_index])
+        grade_avg = float(grade_sum/student_counter)
+    return grade_avg
+
 
 def get_average_presence_of_students(students):
     """
@@ -234,6 +242,22 @@ def get_average_presence_of_students(students):
     :returns: average presence of students rounded to int
     :rtype: int
     """
+
+    presence_index = 6
+    student_counter = 0
+    presence_sum = 0
+
+    for properties in students:
+        student_counter += 1
+        presence_sum += int(properties[presence_index])
+        presence_avg = presence_sum/student_counter
+
+    if isinstance(presence_avg, float) is True:
+        presence_avg = presence_avg + 0.5
+    else:
+        isinstance(presence_avg, int) is True
+        
+    return int(presence_avg)
 
 
 def generate_id(current_ids):
