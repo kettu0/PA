@@ -1,6 +1,7 @@
 """
 The main program should use functions from data and display modules
 """
+import data
 
 
 def add_new_student(students, new_student):
@@ -17,6 +18,11 @@ def add_new_student(students, new_student):
     :returns: updated students list
     :rtype: list
     """
+    uid = data.generate_id(current_ids)
+    new_student.insert(0, uid)
+    students.append(new_student)
+    students[:] = students
+    return students
 
 
 def delete_student_by_id(students, uid):
@@ -26,7 +32,7 @@ def delete_student_by_id(students, uid):
             students.remove(properties)
     students[:] = students
     return students
-    
+
 
 def main():
     """
@@ -38,7 +44,7 @@ def main():
     You should create new functions and call them from main whenever it can
     make the code cleaner
     """
-
+    pass
 
 if __name__ == '__main__':
     main()

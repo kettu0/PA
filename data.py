@@ -308,6 +308,7 @@ def generate_id(current_ids):
             unique_id += lower_case[random.randrange(len(lower_case))]
 
     if unique_id not in current_ids:
+        current_ids.append(unique_id)
         return unique_id
 
 
