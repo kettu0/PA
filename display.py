@@ -16,3 +16,8 @@ def print_program_menu(menu_commands):
 
 def print_command_result(message):
     print(2 * "\n" + message)
+
+
+def yes_no():
+    user_input = input("Back to main menu? Y or N:\n")
+    return user_input 

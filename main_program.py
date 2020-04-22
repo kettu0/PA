@@ -2,7 +2,7 @@
 The main program should use functions from data and display modules
 """
 import data
-
+import display
 
 def add_new_student(students, new_student):
     """
@@ -34,6 +34,16 @@ def delete_student_by_id(students, uid):
     return students
 
 
+def back_to_main_menu():
+    yesno = display.yes_no()
+    if yesno.lower() == "y":
+        main()
+    elif yesno.lower() == "n":
+        print("See you!\n")
+    else:
+        print("There is no such choice.\n")
+        back_to_main_menu()
+
 def main():
     """
     Calls all interaction between user and program, handles program menu
@@ -44,7 +54,149 @@ def main():
     You should create new functions and call them from main whenever it can
     make the code cleaner
     """
-    pass
+    menu_commands = ["Get student by id\n", "Get students by class\n", "Get the youngest student data\n", "Get the oldest student data\n", "Get the youngest student data by class\n",   
+    "Get the oldest student data by class\n", 
+    "Get the average grade of students\n",
+    "Get the average presence of students\n",        
+    "Get students by gender\n",
+    "Sort students by age (ascending and descending)\n",
+    "Delete student by id\n",
+    "Exit program\n"]
+
+    title = open("title.txt", "r")
+    menu_name = title.read()
+    print(menu_name)
+    title.close()
+
+    students = data.import_data_from_file(filename='class_data.txt')
+    display.print_program_menu(menu_commands)
+    
+    choice = input("Please give a number of an action to perform: \n")
+
+    if choice != "11":
+
+        if choice == "0":
+            try:
+                uid = input("\nPlease provide ID: \n")
+                result = data.get_student_by_id(uid, students)
+                print("\n")
+                display.print_student_info(result)
+                print("\n")
+                back_to_main_menu()
+            except ValueError:
+                print("No such ID.")
+                back_to_main_menu()
+
+        elif choice == "1":
+            try:
+                class_name = (input("\nClass 'A' or 'B'?: \n")).upper()
+                result = data.get_students_of_class(students, class_name)
+                print("\n")
+                display.print_students_list(result)
+                print("\n")
+                back_to_main_menu()
+            except ValueError:
+                print("No such class.")
+                back_to_main_menu()
+
+        elif choice == "2":
+            print("\nThe youngest student:")
+            result = data.get_youngest_student(students)
+            print("\n")
+            display.print_student_info(result)
+            print("\n")
+            back_to_main_menu()
+
+        elif choice == "3":
+            print("\nThe oldest student:")
+            result = data.get_oldest_student(students)
+            print("\n")
+            display.print_student_info(result)
+            print("\n")
+            back_to_main_menu()
+
+        elif choice == "4":
+            try:
+                class_name = (input("\nClass 'A' or 'B'?: \n")).upper()
+                print("\nThe youngest student of the class:")
+                result = data.get_youngest_student_of_class(students, class_name)
+                print("\n")
+                display.print_student_info(result)
+                print("\n")
+                back_to_main_menu()
+            except ValueError:
+                print("No such class.")
+                back_to_main_menu()
+
+        elif choice == "5":
+            try:
+                class_name = (input("\nClass 'A' or 'B'?: \n")).upper()
+                print("\nThe oldest student of the class:")
+                result = data.get_oldest_student_of_class(students, class_name)
+                print("\n")
+                display.print_student_info(result)
+                print("\n")
+                back_to_main_menu()
+            except ValueError:
+                print("No such class.")
+                back_to_main_menu()
+
+        elif choice == "6":
+            print("\nThe average grade:")
+            result = data.get_average_grade_of_students(students)
+            print("\n")
+            print(result)
+            print("\n")
+            back_to_main_menu()
+
+        elif choice == "7":
+            print("\nThe average presence:")
+            result = data.get_average_presence_of_students(students)
+            print("\n")
+            print(result)
+            print("\n")
+            back_to_main_menu()
+
+        elif choice == "8":
+            try:
+                gender = (input("\nmale(m) or female(f)?: \n")).lower()
+                result = data.get_all_by_gender(students, gender)
+                print("\n")
+                display.print_students_list(result)
+                print("\n")
+                back_to_main_menu()
+            except ValueError:
+                print("Wrong gender!")
+                back_to_main_menu()
+
+        elif choice == "9":
+            try:
+                order = input("\nascending ('asc') or desc order('desc')?: \n")
+                result = data.sort_students_by_age(students, order)
+                print("\n")
+                display.print_students_list(result)
+                print("\n")
+                back_to_main_menu()
+            except ValueError:
+                print("Wrong order!")
+                back_to_main_menu()
+
+        elif choice == "10":
+            try:
+                uid = input("\nPlease provide ID of student to delete: \n")
+                result = delete_student_by_id(students, uid)
+                print("\n")
+                print("Updated table:\n")
+                display.print_students_list(result)
+                print("\n")
+                back_to_main_menu()
+            except ValueError:
+                print("No such ID.")
+                back_to_main_menu()
+
+    elif choice == "11":
+            print("See you!\n")
+
 
 if __name__ == '__main__':
     main()

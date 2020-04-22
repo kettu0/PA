@@ -337,11 +337,11 @@ def get_all_by_gender(students, gender):
 
     for properties in students:
         name = students[index][name_index]
-        if gender == "female".upper() or gender == "FEMALE".lower():
+        if gender == "female" or gender == "f":
             if name[-1] == "a":
                 students_by_gender.append(properties)
 
-        elif gender == "male".upper() or gender == "MALE".lower():
+        elif gender == "male" or gender == "m":
             if name[-1] != "a":
                 students_by_gender.append(properties)
         else:
