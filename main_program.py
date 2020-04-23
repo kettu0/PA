@@ -200,11 +200,10 @@ def main():
                 back_to_main_menu()
         
         elif choice == "11":
-            print("Students list:\n")
+            print("\nStudents list:\n")
             display.print_students_list(students)
             list_labels = ["name", "surname", "birth year", "average grade", "average presence"]
-            title = "Please provide student data to add: \n"
-            print(title)
+            title = "\nPlease provide student data to add: \n"
             new_student = display.get_inputs(list_labels, title)
             result = add_new_student(students, new_student)
             print("\n")
