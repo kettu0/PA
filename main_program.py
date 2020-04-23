@@ -4,6 +4,7 @@ The main program should use functions from data and display modules
 import data
 import display
 
+
 def add_new_student(students, new_student):
     """
     ADDITIONAL REQUIREMENT - BONUS
@@ -18,6 +19,7 @@ def add_new_student(students, new_student):
     :returns: updated students list
     :rtype: list
     """
+    current_ids = data.get_current_ids(students)
     uid = data.generate_id(current_ids)
     new_student.insert(0, uid)
     students.append(new_student)
@@ -61,6 +63,7 @@ def main():
     "Get students by gender\n",
     "Sort students by age (ascending and descending)\n",
     "Delete student by id\n",
+    "Add new student\n",
     "Exit program\n"]
 
     title = open("title.txt", "r")
@@ -73,7 +76,7 @@ def main():
     
     choice = input("Please give a number of an action to perform: \n")
 
-    if choice != "11":
+    if choice != "12":
 
         if choice == "0":
             try:
@@ -193,8 +196,20 @@ def main():
             except ValueError:
                 print("No such ID.")
                 back_to_main_menu()
+        
+        elif choice == "11":
+            
+            list_labels = ["name", "surname", "birth year", "average grade", "average presence"]
+            title = "Please provide student data to add: \n"
+            new_student = display.get_inputs(list_labels, title)
+            result = add_new_student(students, new_student)
+            print("\n")
+            print("Updated table:\n")
+            display.print_students_list(result)
+            print("\n")
+            back_to_main_menu()
 
-    elif choice == "11":
+    elif choice == "12":
             print("See you!\n")
 
 

@@ -48,6 +48,7 @@ def export_to_file(data, filename='class_data.txt', mode='a'):
             class_list.write(line + "\n")
 
 
+
 def get_student_by_id(uid, students):
     """
     Get student by unique id
@@ -116,7 +117,7 @@ def get_youngest_student(students):
         if latest_year == int(properties[year_index]):
             return properties
 
-    
+
 def get_youngest_student_of_class(students, class_name):
     """
     Get youngest student from given class
@@ -132,10 +133,11 @@ def get_youngest_student_of_class(students, class_name):
     :returns: youngest student from given class
     :rtype: list
     """
+    
+    latest_year = 1900
     year_index = 3
     class_index = 4
-    latest_year = 1900
-
+    
     for properties in students:
         if properties[class_index] == class_name:
             birth_year = int(properties[year_index])
@@ -260,6 +262,14 @@ def get_average_presence_of_students(students):
         isinstance(presence_avg, int) is True
     return int(presence_avg)
 
+
+def get_current_ids(students):
+
+    current_ids = []
+    for properties in students:
+        uid_index = 0
+        current_ids.append(properties[uid_index])
+    return current_ids
 
 def generate_id(current_ids):
     """

@@ -21,3 +21,12 @@ def print_command_result(message):
 def yes_no():
     user_input = input("Back to main menu? Y or N:\n")
     return user_input 
+
+
+def get_inputs(list_labels, title):
+    inputs = []
+    print(title)
+    for label in list_labels:
+        user_input = input(label + ': ')
+        inputs.append(user_input)
+    return inputs
