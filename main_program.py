@@ -186,10 +186,12 @@ def main():
 
         elif choice == "10":
             try:
+                print("Students list:\n")
+                display.print_students_list(students)
                 uid = input("\nPlease provide ID of student to delete: \n")
                 result = delete_student_by_id(students, uid)
                 print("\n")
-                print("Updated table:\n")
+                print("Updated students list:\n")
                 display.print_students_list(result)
                 print("\n")
                 back_to_main_menu()
@@ -198,13 +200,15 @@ def main():
                 back_to_main_menu()
         
         elif choice == "11":
-            
+            print("Students list:\n")
+            display.print_students_list(students)
             list_labels = ["name", "surname", "birth year", "average grade", "average presence"]
             title = "Please provide student data to add: \n"
+            print(title)
             new_student = display.get_inputs(list_labels, title)
             result = add_new_student(students, new_student)
             print("\n")
-            print("Updated table:\n")
+            print("Updated students list:\n")
             display.print_students_list(result)
             print("\n")
             back_to_main_menu()
