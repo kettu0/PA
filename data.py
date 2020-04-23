@@ -88,6 +88,8 @@ def get_students_of_class(students, class_name):
     for properties in students:
         if properties[class_index] == class_name:
             students_from_class.append(properties)
+        if class_name != "A" and class_name != "a" and class_name != "B" and class_name != "b":
+            raise ValueError("Class does not exist")
     return students_from_class
 
 

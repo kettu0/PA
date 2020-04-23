@@ -127,7 +127,7 @@ def main():
                 display.print_student_info(result)
                 print("\n")
                 back_to_main_menu()
-            except ValueError:
+            except ValueError and TypeError:
                 print("No such class.")
                 back_to_main_menu()
 
@@ -140,7 +140,7 @@ def main():
                 display.print_student_info(result)
                 print("\n")
                 back_to_main_menu()
-            except ValueError:
+            except ValueError and TypeError:
                 print("No such class.")
                 back_to_main_menu()
 
